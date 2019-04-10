@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </View>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <ImageView
+                android:src="@mipmap/yonghu"
+                android:id="@+id/zc_sjhtx"
+                android:layout_width="50dp"
+                android:layout_height="match_parent" />
+            <EditText
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:hint="手机号或邮箱"
+                android:id="@+id/zc_sjh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <ImageView
+                android:src="@mipmap/mima"
+                android:id="@+id/zc_mmtx"
+                android:layout_width="50dp"
+                android:layout_height="match_parent" />
+            <EditText
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:hint="密码"
+                android:id="@+id/zc_mm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <ImageView
+                android:src="@mipmap/name"
+                android:id="@+id/zc_mztx"
+                android:layout_width="50dp"
+                android:layout_height="match_parent" />
+            <EditText
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:hint="名字"
+                android:id="@+id/zc_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+          <ImageView
+              android:src="@mipmap/xiangji"
+              android:layout_marginLeft="50dp"
+              android:id="@+id/zc_img"
+              android:layout_width="100dp"
+              android:layout_height="100dp" />
+
+            <Button
+                android:visibility="gone"
+                android:text="头像"
+                android:layout_marginTop="30dp"
+                android:id="@+id/zc_toxiang"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="170dp" />
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/zc_zc"
+            android:text="注册"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>
