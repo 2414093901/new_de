@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -93,6 +94,17 @@ public class LandingActivity extends BaseAppCompatActivity implements SwipeRefre
         dlRecyclerView.setLayoutManager(linearLayoutManager);
         dlSwipeRefreshLayout.setOnRefreshListener(this);
         dlRecyclerView.addItemDecoration(new DividerItemDecoration(LandingActivity.this, DividerItemDecoration.VERTICAL));
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode ==3){
+            onRefresh();
+        }else if(requestCode ==4){
+            onRefresh();
+        }
     }
 
     //获取所有数据

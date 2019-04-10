@@ -94,6 +94,7 @@ public class AdverActivity extends AppCompatActivity implements EasyPermissions.
                             send_base send_base = JSON.parseObject(resouces, send_base.class);
                             if (send_base.getCode() == 200){
                                 Log.e("555","成功");
+                                setResult(4);
                                 finish();
 //                                startActivity(new Intent().setClass(AdverActivity.this,LandingActivity.class));
                             }else {

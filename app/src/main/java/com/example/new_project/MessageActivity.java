@@ -98,6 +98,7 @@ public class MessageActivity extends AppCompatActivity implements EasyPermission
                             send_base send_base = JSON.parseObject(resouces, send_base.class);
                             if (send_base.getCode() == 200){
                                 Log.e("555","成功");
+                                setResult(3);
                                 finish();
 //                                startActivity(new Intent().setClass(MessageActivity.this,LandingActivity.class));
                             }else {
@@ -201,13 +202,13 @@ public class MessageActivity extends AppCompatActivity implements EasyPermission
             Log.d("拍照返回图片路径:", photoPath);
                 file = new File(photoPath);
             Log.d("debug","file size: "+file.length());
-            Log.d("debug","file name"+file.getName());
+
             Picasso.with(MessageActivity.this).load(file).into(msgImg1);
 
             Bitmap bmp = BitmapFactory.decodeFile(photoPath);
             img_compress.compressImageToFile(bmp,file,20);
             Log.d("debug","file size: "+file.length());
-            Log.d("debug","file name"+file.getName());
+
         }
         else if (requestCode == 2 && resultCode == RESULT_OK) {
             List<String> pathList = data.getStringArrayListExtra(ImageSelectorActivity.EXTRA_RESULT);
