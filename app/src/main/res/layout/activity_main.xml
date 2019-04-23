@@ -28,7 +28,6 @@
             android:layout_width="50dp"
             android:layout_height="match_parent" />
         <EditText
-            android:text="258369"
             android:layout_marginRight="1dp"
             android:background="#ffffff"
             android:gravity="center_vertical"
@@ -55,7 +54,6 @@
             android:background="#ffffff"
             android:gravity="center_vertical"
             android:hint="密码"
-            android:text="258369"
             android:id="@+id/main_mm"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

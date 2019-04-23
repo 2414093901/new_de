@@ -1,4 +1,4 @@
-package com.example.new_project.Utility;
+package com.example.new_project.BaseMVP;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
@@ -6,24 +6,21 @@ import com.loopj.android.http.TextHttpResponseHandler;
 
 import cz.msebera.android.httpclient.Header;
 
-/**
- * Created by ZXY on 2019/4/1 9:50.
- * Class functions
- * *********************************************************
- * *
- * *********************************************************
- */
+public class baseModel {
+//    private baseModel(){
+//    }
+//    public static baseModel  getInstance(){
+//        baseModel baseModel = new baseModel();
+//        return baseModel;
+//    }
 
-public class HttpClick {
+    public interface IHttpRequestListener{
+        void IOnSuccess(String resouces);//成功
+        void IOnFailure(String resouces);//失败
+    }
 
-    private HttpClick(){
-    }
-    public static HttpClick  getInstance(){
-        HttpClick httpClick = new HttpClick();
-        return httpClick;
-    }
     //调用网路请求
-    public void  get(String url, RequestParams requestParams,final IHttpRequestListener iHttpRequestListener) {
+    public void  get(String url, RequestParams requestParams, final IHttpRequestListener iHttpRequestListener) {
         //1\创建对象
         AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
         //2、创建参数
@@ -40,6 +37,8 @@ public class HttpClick {
         });
 
     }
+
+
 
     //调用网路请求
     public void  post(String url, RequestParams requestParams,final IHttpRequestListener iHttpRequestListener) {
@@ -58,11 +57,6 @@ public class HttpClick {
             }
         });
 
-    }
-
-    public interface IHttpRequestListener{
-        void IOnSuccess(String resouces);//成功
-        void IOnFailure(String resouces);//失败
     }
 
 }

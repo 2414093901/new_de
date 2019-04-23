@@ -1,4 +1,4 @@
-package com.example.new_project.base;
+package com.example.new_project.Base;
 
 import java.util.List;
 

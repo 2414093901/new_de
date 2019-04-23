@@ -1,4 +1,4 @@
-package com.example.new_project;
+package com.example.new_project.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,8 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.new_project.R;
 import com.example.new_project.Utility.Http_url;
-import com.example.new_project.base.msgbase;
+import com.example.new_project.Base.msgbase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

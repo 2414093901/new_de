@@ -2,9 +2,13 @@ package com.example.new_project.Utility;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.new_project.R;
@@ -96,9 +100,19 @@ public class InfoDialog_paizhao extends Dialog{
             return mDialog;
         }
 
+    }
 
 
-
-
+    /**
+     * 设置infoDialog适配屏幕
+     */
+    public void setWondow(InfoDialog_paizhao infoDialog,WindowManager m){
+        Window window = infoDialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        WindowManager.LayoutParams WP = infoDialog.getWindow().getAttributes();
+        Display d = m.getDefaultDisplay(); //为获取屏幕宽、高
+        WindowManager.LayoutParams p = infoDialog.getWindow().getAttributes(); //获取对话框当前的参数值
+        p.width = d.getWidth(); //宽度设置为屏幕
+        infoDialog.getWindow().setAttributes(WP);
     }
 }
