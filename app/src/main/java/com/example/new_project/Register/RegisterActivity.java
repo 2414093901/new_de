@@ -19,6 +19,7 @@ import com.alibaba.fastjson.JSON;
 import com.example.new_project.R;
 import com.example.new_project.Utility.Http_url;
 import com.example.new_project.Utility.InfoDialog_paizhao;
+import com.example.new_project.Utility.ShareUtils;
 import com.example.new_project.Utility.getPhotoFromPhotoAlbum;
 import com.example.new_project.Utility.img_compress;
 import com.example.new_project.Base.Resgister_base;
@@ -96,6 +97,10 @@ public class RegisterActivity extends BaseAppCompatActivity<RegisterView, Regist
             Intent intent = new Intent();
             intent.putExtra("photoPath",photoPath);
             intent.putExtra("phone",sjh);
+            if (sjh!=null || photoPath!=null){
+                ShareUtils.save(this,"phone",sjh);
+                ShareUtils.save(this,"photoPath",photoPath);
+            }
             Log.e("222", "sjh:" + sjh + "photoPath:" + photoPath);
             intent.setClass(RegisterActivity.this, LandActivity.class);
             startActivity(intent);
@@ -104,6 +109,7 @@ public class RegisterActivity extends BaseAppCompatActivity<RegisterView, Regist
             Toast.makeText(RegisterActivity.this, "注册失败" + res, Toast.LENGTH_SHORT).show();
         }
     }
+
 
     @Override
     public void Failure(String res) {

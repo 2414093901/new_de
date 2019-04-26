@@ -94,6 +94,7 @@ public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView.View
              footViewHolder = (FootViewHolder) viewHolder;
             Log.e("444","footViewHolder内容数据的i:"+i);
         } else if(viewHolder instanceof ItemViewHolder){
+            i=i-1;
             ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
             itemViewHolder.initDate(i);
         }
@@ -221,12 +222,14 @@ public class RecyclerView_adapter extends RecyclerView.Adapter<RecyclerView.View
                 try{
                     Picasso.with(context).load(Http_url.HTTP_URL + arrayList.get(i).getImgBases().get(1).getIimg()).into(gg2);
                 }catch (Exception e){
-                    Picasso.with(context).load(R.mipmap.qq).into(gg2);
+                    gg2.setVisibility(View.GONE);
+//                    Picasso.with(context).load(R.mipmap.qq).into(gg2);
                 }
                 try{
                     Picasso.with(context).load(Http_url.HTTP_URL + arrayList.get(i).getImgBases().get(2).getIimg()).into(gg3);
                 }catch (Exception e){
-                    Picasso.with(context).load(R.mipmap.xinlang).into(gg3);
+                    gg3.setVisibility(View.GONE);
+//                    Picasso.with(context).load(R.mipmap.xinlang).into(gg3);
                 }
                 ggAuthor.setText("广告:"+arrayList.get(i).getUphone());
             }

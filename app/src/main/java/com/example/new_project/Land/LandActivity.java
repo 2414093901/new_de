@@ -21,6 +21,7 @@ import com.example.new_project.Adapter.RecyclerView_adapter;
 import com.example.new_project.Utility.Http_url;
 import com.example.new_project.Base.msgbase;
 import com.example.new_project.BaseMVP.BaseAppCompatActivity;
+import com.example.new_project.Utility.ShareUtils;
 import com.loopj.android.http.RequestParams;
 
 import java.util.ArrayList;
@@ -43,8 +44,8 @@ public class LandActivity extends BaseAppCompatActivity<LandView,LandPresenter> 
     ArrayList<msgbase.DataBean.ListBean> arrayList = new ArrayList<>();
 
     Intent intent;
-    String phone;
-    String photoPath;
+    String phone,phone1;
+    String photoPath,photoPath1;
     @BindView(R.id.dl_btn)
     Button dlBtn;
     @BindView(R.id.dl_btn2)
@@ -58,10 +59,22 @@ public class LandActivity extends BaseAppCompatActivity<LandView,LandPresenter> 
         phone = intent.getStringExtra("phone");
         photoPath = intent.getStringExtra("photoPath");
         Log.e("222", "phone:" + phone + "photoPath:" + photoPath);
+        Head();
         initData();
         initView();
         initLoading();
     }
+
+    public void Head(){
+        if (phone!=null || photoPath!=null){
+            ShareUtils.save(this,"phone",phone);
+            ShareUtils.save(this,"photoPath",photoPath);
+        }else {
+             phone1 = ShareUtils.get(this, "phone");
+             photoPath1 = ShareUtils.get(this, "photoPath");
+        }
+    }
+
 
     private void initData() {
         RequestParams requestParams = new RequestParams();//相当于Map
@@ -90,7 +103,7 @@ public class LandActivity extends BaseAppCompatActivity<LandView,LandPresenter> 
                 Intent intent = new Intent();
                 intent.setClass(LandActivity.this, MessageActivity.class);
                 intent.putExtra("msgphone", phone);
-                startActivity(intent);
+                startActivityForResult(intent,3);
 //                finish();
                 break;
             case R.id.dl_btn2:
@@ -98,7 +111,7 @@ public class LandActivity extends BaseAppCompatActivity<LandView,LandPresenter> 
                 Intent intent2 = new Intent();
                 intent2.setClass(LandActivity.this, AdverActivity.class);
                 intent2.putExtra("msgphone", phone);
-                startActivity(intent2);
+                startActivityForResult(intent2,4);
 //                finish();
                 break;
         }
@@ -124,6 +137,16 @@ public class LandActivity extends BaseAppCompatActivity<LandView,LandPresenter> 
         return "登陆成功";
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 3 || resultCode==4 ){
+            onRefresh();
+        }
+    }
+
+
     @Override
     public void Land(String res) {
         msgbase msgbase1 = JSON.parseObject(res, msgbase.class);
@@ -133,7 +156,7 @@ public class LandActivity extends BaseAppCompatActivity<LandView,LandPresenter> 
             }
             arrayList.addAll(msgbase1.getData().getList());
         } else {
-            handler.sendEmptyMessageDelayed(3, 2000);
+            handler.sendEmptyMessageDelayed(3, 1000);
         }
 
         if (RecyclerView_adapter != null) {
@@ -192,7 +215,7 @@ public class LandActivity extends BaseAppCompatActivity<LandView,LandPresenter> 
             switch (msg.what) {
                 case 1:
                     if (RecyclerView_adapter == null) {
-                        RecyclerView_adapter = new RecyclerView_adapter(LandActivity.this, arrayList, photoPath, phone);
+                        RecyclerView_adapter = new RecyclerView_adapter(LandActivity.this, arrayList, photoPath1, phone1);
                         dlRecyclerView.setAdapter(RecyclerView_adapter);
                     } else {
                         RecyclerView_adapter.setArrayList(arrayList);

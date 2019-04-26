@@ -7,12 +7,6 @@ import com.loopj.android.http.TextHttpResponseHandler;
 import cz.msebera.android.httpclient.Header;
 
 public class baseModel {
-//    private baseModel(){
-//    }
-//    public static baseModel  getInstance(){
-//        baseModel baseModel = new baseModel();
-//        return baseModel;
-//    }
 
     public interface IHttpRequestListener{
         void IOnSuccess(String resouces);//成功
@@ -37,8 +31,6 @@ public class baseModel {
         });
 
     }
-
-
 
     //调用网路请求
     public void  post(String url, RequestParams requestParams,final IHttpRequestListener iHttpRequestListener) {

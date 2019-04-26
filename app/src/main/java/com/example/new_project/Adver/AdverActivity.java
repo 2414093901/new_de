@@ -140,8 +140,8 @@ public class AdverActivity extends BaseAppCompatActivity<AdverView,AdverPresente
             File[] file = new File[pathList.size()];
             for(int i=0;i<file.length;i++){
                 file[i] = new File(pathList.get(i));
-//                Bitmap bmp = BitmapFactory.decodeFile(pathList.get(i));
-//                img_compress.compressImageToFile(bmp,file[i],20);
+                Bitmap bmp = BitmapFactory.decodeFile(pathList.get(i));
+                img_compress.compressImageToFile(bmp,file[i],20);
             }
             try {
                 requestParams.put("iimgs", file);

@@ -9,4 +9,6 @@ public class Http_url {
     public static String URL_send= HTTP_URL+"/send";
 
     public static String URL_sendMore= HTTP_URL+"/sendMore";
+
+    public static String fileName = "config.txt";
 }
